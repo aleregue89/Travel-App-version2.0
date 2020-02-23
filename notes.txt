@@ -1,0 +1,9 @@
+Ask yourself:
+
+How do I setup a Node environment with Express and the necessary project dependencies?
+How do I setup a server with GET and POST routes?
+How do I create developer credentials for a Web API?
+How do I use the Fetch API with my credentials and user input to get dynamic data into my app routes?
+How do I access a GET route on the server side, from a function called on the client side?
+How do I chain Promises together
+How do I access HTML elements with JavaScript and set their properties dynamically?
