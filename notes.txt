@@ -7,3 +7,7 @@ How do I use the Fetch API with my credentials and user input to get dynamic dat
 How do I access a GET route on the server side, from a function called on the client side?
 How do I chain Promises together
 How do I access HTML elements with JavaScript and set their properties dynamically?
+
+changes while webpack set up:
+<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/style.css">

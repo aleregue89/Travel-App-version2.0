@@ -1,16 +1,24 @@
 {
-  "name": "weather-journal-app",
+  "name": "Travel-App",
   "version": "1.0.0",
   "description": "## Overview This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node src/server/index.js",
+    "build": "webpack"
   },
-  "author": "",
+  "author": "Alejandro Regueira",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6"
   }
 }
