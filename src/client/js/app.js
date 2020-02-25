@@ -97,3 +97,6 @@ const updateUI = async (url = '') => {
     }
 
 };
+
+// adding exports statements 
+export {performAction}
