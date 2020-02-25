@@ -1,8 +1,11 @@
 const path = require('path')
 const webpack = require('webpack')
+//new reference to HtmlWebPackPlugin //
+const HtmlWebPackPlugin = require("html-webpack-plugin")
 
 module.exports = {
     entry: './src/client/index.js',
+    mode: 'production',
     module: {
         rules: [
             {
@@ -11,5 +14,11 @@ module.exports = {
                 loader: "babel-loader"
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebPackPlugin ({
+            template: "./src/client/views/index.html",
+            filename: "./index.html"
+        })
+    ]
 }

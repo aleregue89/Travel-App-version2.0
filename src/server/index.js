@@ -20,7 +20,9 @@ const cors = require('cors');
 app.use(cors());
 
 // Initialize the main project folder
-app.use(express.static('src/client/views'));
+//app.use(express.static('src/client/views'));
+//updating server file to look for assets from dist folder instead of client
+app.use(express.static('dist'));
 
 // Setup Server
 const port = 8000;
@@ -32,6 +34,11 @@ function listening() {
     console.log('server running');
     console.log(`running on localhost: ${port}`);
 }
+
+// PLUGINS -- update server file, change home route to use the index file from dist
+app.get('/', function(request, response) {
+    response.sendFile('dist/index.html');
+});
 
 // ** GET route Request - respond with JS object to return projectData ** //
 app.get('/all', sendData);
@@ -57,15 +64,3 @@ function callBack (request, response) {
     projectData.push(newEntry);
     console.log(projectData);
 }
-
-
-/*
-// POST an animal
-const data = [];
-
-app.post('/animal', addAnimal);
-
-function addAnimal (req, res) {
-    data.push(req.body);
-}
-*/
