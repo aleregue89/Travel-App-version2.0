@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Travel App</title>
-
-
+<title>Travel Planner</title>
+<meta content="width=device-width, initial-scale =1, maximun-scale=1" name="viewport"/>
 </head>
- <body>
-<div id = "app">
+
+<head>Travel Planner</head>
+
+<body>
+  <section class="trip info">
+    <p class="text" style="font-size: 10px;">My Trip to: </p>
+    <input type="text" id="destiny" placeholder="Please enter a City">
+
+    <p class="text" style="font-size: 10px;">Departure Day</p>
+    <input type="date" id="departure" placeholder="Please enter your departure date">
+
+    <p class="text" style="font-size: 10px;">Returning Day</p>
+    <input type="date" id="returning" placeholder="Please enter your return date">
+
+    <button class="button" id="saveTrip" type="button">Save my trip</button>
+    <button class="button" id="removeTrip" type="button">Remove my trip</button>
+    <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
+    <p>Weather-Forecast: <ul id="forecast"></ul></p>
+    <p><div id="picture" style="display: none;"></div></p>
+  </section>
+  <div id = "app">
   <div class ="holder headline">
     Travel Planner App
   </div>
 <div id="loading"></div>
   <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
+    <label for="zip">Please enter a city</label>
     <input type="text" id="zip" placeholder="enter zip code here">
   </div>
   <div class ="holder feel">

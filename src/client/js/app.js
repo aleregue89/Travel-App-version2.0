@@ -1,5 +1,3 @@
-//import { url } from "inspector";
-
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apikey = '4ddfc73dcbfe30676b5536475ecb5055';
