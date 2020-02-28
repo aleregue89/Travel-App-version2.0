@@ -6,25 +6,34 @@
 <meta content="width=device-width, initial-scale =1, maximun-scale=1" name="viewport"/>
 </head>
 
-<head>Travel Planner</head>
+<header>Travel Planner</header>
 
 <body>
-  <section class="trip info">
-    <p class="text" style="font-size: 10px;">My Trip to: </p>
-    <input type="text" id="destiny" placeholder="Please enter a City">
-
-    <p class="text" style="font-size: 10px;">Departure Day</p>
-    <input type="date" id="departure" placeholder="Please enter your departure date">
-
-    <p class="text" style="font-size: 10px;">Returning Day</p>
-    <input type="date" id="returning" placeholder="Please enter your return date">
-
-    <button class="button" id="saveTrip" type="button">Save my trip</button>
-    <button class="button" id="removeTrip" type="button">Remove my trip</button>
-    <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
-    <p>Weather-Forecast: <ul id="forecast"></ul></p>
-    <p><div id="picture" style="display: none;"></div></p>
-  </section>
+  <div class="container">
+    <div class="image">
+      <p><div id="picture" style="display: none;"></div></p>
+    </div>
+    <div class="content">
+      <section class="trip info">
+        <p class="text" style="font-size: 10px;">My Trip to: </p>
+        <input type="text" id="destiny" placeholder="Please enter a City">
+    
+        <p class="text" style="font-size: 10px;">Departure Day</p>
+        <input type="date" id="departure" placeholder="Please enter your departure date">
+    
+        <p class="text" style="font-size: 10px;">Returning Day</p>
+        <input type="date" id="returning" placeholder="Please enter your return date">
+    
+        <button class="button" id="saveTrip" type="button">Save my trip</button>
+        <button class="button" id="removeTrip" type="button">Remove my trip</button>
+        <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
+        <p>Weather-Forecast: <ul id="forecast"></ul></p>
+        
+      </section>
+    </div>
+    
+  </div>
+  
   <div id = "app">
   <div class ="holder headline">
     Travel Planner App
@@ -42,7 +51,7 @@
   <div class ="holder entry">
     <div class = "title"><span>Recent Entry</span> </div>
    <div id = "entryHolder">
-    <div id = "date"></div> 
+   <div id = "date"></div> 
    <div id = "temp"></div>
    <div id = "content"></div>
   </div>
