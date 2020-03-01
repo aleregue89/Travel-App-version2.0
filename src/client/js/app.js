@@ -14,7 +14,7 @@ function performAction(event) {
     getGeoNames(geoNames_URL, cityInput, userName).then(function(data) {
         console.log(data);
         // add data to server => POST request
-        postData('http://localhost:8000/add', {latitude: data.lat, longitude: data.lng, country: data.countryName});
+        postData('http://localhost:8000/add', {latitude: data.latitude, longitude: data.longitude, country: data.countryName});
     });
 
     countdown();
