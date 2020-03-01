@@ -1,4 +1,76 @@
+// Travel-Planner functionality //
+
 /* Global Variables */
+const geoNames_URL = 'https://api.geonames.org/searchJSON?q=';
+const userName = 'aleregue25';
+
+
+/* creating event listener - click on button - save trip*/
+document.getElementById('saveTrip').addEventListener('click', performAction);
+
+function performAction(event) {
+    const cityInput = document.getElementById('city').value;
+
+    getGeoNames(geoNames_URL, cityInput, userName).then(function(data) {
+        console.log(data);
+        // add data to server => POST request
+        postData('/add', {latitude: latitude, longitude: longitude, country: country});
+    });
+}
+
+// ** Async function that uses FETCH() to make a GET request to the API ** //
+const getGeoNames = async(geoNames_URL, city_input, userName) => {
+    const response = await fetch(geoNames_URL+city_input+'&maxRows=10&username='+userName);
+    try {
+        // transform into JSON
+        const data = await response.json();
+        console.log(data);
+        return data;
+    } catch (error) {
+        console.log("error", error);
+    }
+};
+
+//
+const postData = async ( url = '', data = {})=>{
+    //console.log(data);
+      const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header        
+    });
+  
+    try {
+        const newData = await response.json();
+        console.log(newData);
+        return newData;
+    }catch(error) {
+      console.log("error", error);
+      // appropriately handle the error
+    }
+};
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Global Variables 
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apikey = '4ddfc73dcbfe30676b5536475ecb5055';
 //let zip = document.getElementById('zip').value;
@@ -53,7 +125,7 @@ const getWeather = async(baseURL, newZip, apiKey) => {
 };
 
 // ** Creating another PROMISE - POST request to add API data as well data from user ** //
-/* Function to POST data */
+/* Function to POST data *
 const postData = async ( url = '', data = {})=>{
     //console.log(data);
       const response = await fetch(url, {
@@ -81,7 +153,7 @@ const postData = async ( url = '', data = {})=>{
   //postData('/addzipCode', {zipCode: 33165});
 */
 
-  // ** Promise for updating the UI dynamically ** //
+  /* Promise for updating the UI dynamically 
 const updateUI = async (url = '') => {
     const request = await fetch(url);
     try{
@@ -96,5 +168,5 @@ const updateUI = async (url = '') => {
 
 };
 
-// adding exports statements 
+// adding exports statements*/ 
 export {performAction}

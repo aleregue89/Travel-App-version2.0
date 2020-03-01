@@ -55,11 +55,17 @@ function callBack (request, response) {
     //res.send('POST received');
     //let data = req.body;
     //console.log(data);
+    /*
     let newEntry = {
         temperature: request.body.temperature,
         date: request.body.date,
         userResponse: request.body.userResponse,
-    };
+    };*/
+    let newEntry = {
+        latitude: request.body.latitude,
+        longitude: request.body.longitude,
+        country: request.body.country,
+    }
 
     projectData.push(newEntry);
     console.log(projectData);
