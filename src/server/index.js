@@ -62,9 +62,9 @@ function callBack (request, response) {
         userResponse: request.body.userResponse,
     };*/
     let newEntry = {
-        latitude: request.body.latitude,
-        longitude: request.body.longitude,
-        country: request.body.country,
+        latitude: request.body.lat,
+        longitude: request.body.lng,
+        country: request.body.countryName,
     }
 
     projectData.push(newEntry);
