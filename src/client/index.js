@@ -12,4 +12,3 @@ import './styles/image.scss'
 //exporting my JS function
 export {performAction}
 
-alert("I exist!");

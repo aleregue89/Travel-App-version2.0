@@ -14,3 +14,31 @@ changes while webpack set up:
 
 deleted from src/client/views/index.html => installing HtmlWebPackPlugin
 <script type="text/javascript" src="../../../dist/main.js"></script>
+
+ <div id = "app">
+  <div class ="holder headline">
+    Travel Planner App
+  </div>
+<div id="loading"></div>
+  <div class ="holder zip">
+    <label for="zip">Please enter a city</label>
+    <input type="text" id="zip" placeholder="enter zip code here">
+  </div>
+  <div class ="holder feel">
+    <label for="feelings">How are you feeling today?</label>
+    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
+    <button id="generate" type = "submit"> Generate </button>
+  </div>
+  <div class ="holder entry">
+    <div class = "title"><span>Recent Entry</span> </div>
+   <div id = "entryHolder">
+   <div id = "date"></div> 
+   <div id = "temp"></div>
+   <div id = "content"></div>
+  </div>
+  </div>
+  </div>
+<script src="../src/client/js/app.js" type="module"></script>
+
+</body>
+</html>

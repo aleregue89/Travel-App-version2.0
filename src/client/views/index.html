@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <div class="image">
-      <p><div id="picture" style="display: none;"></div></p>
+      <img id="picture" alt= "image from pixabay API" style="width: auto; height: auto;">
     </div>
     <div class="content">
       <section class="trip info">
@@ -19,45 +19,20 @@
         <input type="text" id="city" placeholder="Please enter a City">
     
         <p class="text" style="font-size: 10px;">Departure Day</p>
-        <input type="date" id="departure" placeholder="Please enter your departure date">
+        <input type="date" id="starDate" placeholder="Please enter your departure date">
     
         <p class="text" style="font-size: 10px;">Returning Day</p>
-        <input type="date" id="returning" placeholder="Please enter your return date">
+        <input type="date" id="endDate" placeholder="Please enter your return date">
     
         <button class="button" id="saveTrip" type="button">Save my trip</button>
         <button class="button" id="removeTrip" type="button">Remove my trip</button>
+        <p>Trip duration (days):<div id="tripLength" style="color: black;"></div></p>
         <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
-        <p>Weather-Forecast: <ul id="forecast"></ul></p>
+        <p>Weather-Forecast: <div id="forecast"></div></p>
         
       </section>
     </div>
     
   </div>
   
-  <div id = "app">
-  <div class ="holder headline">
-    Travel Planner App
-  </div>
-<div id="loading"></div>
-  <div class ="holder zip">
-    <label for="zip">Please enter a city</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title"><span>Recent Entry</span> </div>
-   <div id = "entryHolder">
-   <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-  </div>
-<script src="../src/client/js/app.js" type="module"></script>
-
-</body>
-</html>
+ 
