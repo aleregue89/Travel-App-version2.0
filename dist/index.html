@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Travel App</title>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <title>Travel Planner</title>
+  <meta content="width=device-width, initial-scale =1, maximun-scale=1" name="viewport"/>
+  <link href="main.css" rel="stylesheet"></head>
 
+  <header>Travel Planner</header>
 
-</head>
- <body>
-<div id = "app">
-  <div class ="holder headline">
-    Travel Planner App
-  </div>
-<div id="loading"></div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title"><span>Recent Entry</span> </div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-  </div>
-<script src="../src/client/js/app.js" type="module"></script>
-
-<script type="text/javascript" src="main.js"></script></body>
+  <body>
+    <div class="container" id="mainContainer">
+      <div class="image">
+        <img id="picture" alt= "image from pixabay API" style="width: auto; height: auto;">
+    </div>
+    <div class="content">
+      <section class="trip info" id='section'>
+        <p class="text" style="font-size: 10px;">My Trip to: </p>
+        <input type="text" id="city" placeholder="Please enter a City">
+    
+        <p class="text" style="font-size: 10px;">Departure Day</p>
+        <input type="date" id="starDate" placeholder="Please enter your departure date">
+    
+        <p class="text" style="font-size: 10px;">Returning Day</p>
+        <input type="date" id="endDate" placeholder="Please enter your return date">
+    
+        <p><button class="button" id="saveTrip" type="button" onclick="return Client.performAction(event)">Save my trip</button></p>
+        <p><button class="button" id="removeTrip" type="button" onclick="return Client.removeTripHandler(event)">Remove my trip</button></p>
+        <p>Trip duration (days):<div id="tripLength" style="color: black;"></div></p>
+        <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
+        <p>Weather-Forecast: <div id="forecast"></div></p>
+        
+      </section>
+    </div>
+    
+    <script>
+      // check that source workers are supported
+      if ('serviceWorkers' in navigator) {
+        //use the window load event to keep the page load permanent
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
+    
+  
+  <script type="text/javascript" src="main.js"></script></body>
 </html>

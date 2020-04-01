@@ -1,3 +1,5 @@
+import { checkForName } from "./nameValidation";
+
 // Travel-Planner functionality //
 
 /* Global Variables */
@@ -9,51 +11,108 @@ const userName = 'aleregue25';
 document.getElementById('saveTrip').addEventListener('click', performAction);
 
 function performAction(event) {
+    event.preventDefault();
+
     const cityInput = document.getElementById('city').value;
 
-    getGeoNames(geoNames_URL, cityInput, userName).then(function(geoNameDataResponse) {
-        let entry = {
-            latitude: geoNameDataResponse.geonames[0].lat, 
-            longitude: geoNameDataResponse.geonames[0].lng, 
-            country: geoNameDataResponse.geonames[0].countryName,
-        };
-        // add data to server => POST request
-        sendServerRequest('http://localhost:8000/getDarkSky', entry).then(function (darkSkyDataResponse) { 
-            updateUI(darkSkyDataResponse);
-        });
-        sendServerRequest('http://localhost:8000/getPixaBay', entry).then(function(pixaBayDataResponse) {    
-            let hits = pixaBayDataResponse.hits;
-            let i = 0;
-            let relevantHits = [];
-            for(i = 0; i < hits.length; i++) {
-                let currentHit = hits[i]
-                if (currentHit.type === "photo") {
-                    let tags = currentHit.tags;
-                    let city = cityInput.toLowerCase();
-                    if (tags.includes(city)) {
-                        relevantHits.push({
-                            image: currentHit.previewURL,
-                            likes: currentHit.likes,
-                        });
+    // checking if a valid input was entered in city field
+    if (Client.checkForName(cityInput)) {
+
+        //if user enter a valid input - the event will be handle it
+        getGeoNames(geoNames_URL, cityInput, userName).then(function(geoNameDataResponse) {
+            let entry = {
+                latitude: geoNameDataResponse.geonames[0].lat, 
+                longitude: geoNameDataResponse.geonames[0].lng, 
+                country: geoNameDataResponse.geonames[0].countryName,
+            };
+            // add data to server => POST request
+            sendServerRequest('http://localhost:8000/getDarkSky', entry).then(function (darkSkyDataResponse) { 
+                updateUI(darkSkyDataResponse);
+            });
+            sendServerRequest('http://localhost:8000/getPixaBay', entry).then(function(pixaBayDataResponse) {    
+                let hits = pixaBayDataResponse.hits;
+                let i = 0;
+                let relevantHits = [];
+                for(i = 0; i < hits.length; i++) {
+                    let currentHit = hits[i]
+                    if (currentHit.type === "photo") {
+                        let tags = currentHit.tags;
+                        let city = cityInput.toLowerCase();
+                        if (tags.includes(city)) {
+                            relevantHits.push({
+                                image: currentHit.previewURL,
+                                likes: currentHit.likes,
+                            });
+                        }
                     }
                 }
-            }
-            if (relevantHits.length === 0) {
-                relevantHits.push({
-                    image: hits[0].previewURL,
-                    likes: hits[0].likes,
-                });
-            }
-            updatePicture(relevantHits[0]);
+                if (relevantHits.length === 0) {
+                    relevantHits.push({
+                        image: hits[0].previewURL,
+                        likes: hits[0].likes,
+                    });
+                }
+                updatePicture(relevantHits[0]);
+            });
         });
-    });
+    
+        countDownTime();
+        setInterval(countDownTime, 1000);
 
-    countDownTime();
-    setInterval(countDownTime, 1000);
+    } else {
+        alert('Please enter a correct city');
+        
+    }
+
 }
 
 // Creating fuction to reload page when Client click button 'Remove Trip'
-document.getElementById('removeTrip').addEventListener('click', reloadPage);
+document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
+
+function removeTripHandler(event) {
+    event.preventDefault();
+
+    const elementRemoverForecastId = document.getElementById('forecast');
+    while (elementRemoverForecastId.firstChild) {
+        elementRemoverForecastId.removeChild(elementRemoverForecastId.firstChild);
+    }
+
+    const elementRemoverPictureId = document.getElementById('picture');
+    while (elementRemoverPictureId.firstChild) {
+        elementRemoverPictureId.removeChild(elementRemoverPictureId.firstChild);
+    }
+
+    const elementRemoverCountdownId = document.getElementById('countdown');
+    while (elementRemoverCountdownId.firstChild) {
+        elementRemoverCountdownId.removeChild(elementRemoverCountdownId.firstChild);
+    }
+
+    const elementRemoverTripLengthId = document.getElementById('tripLength');
+    while (elementRemoverTripLengthId.firstChild) {
+        elementRemoverTripLengthId.removeChild(elementRemoverTripLengthId.firstChild);
+    }
+
+    //const elementRemoverEndDate = $('endDate').reset();
+    //const elementRemoverEndDateId = document.getElementById('endDate').value='';
+    //const elementRemoverStartDate = document.getElementById('starDate').value='';
+   
+    let element = document.getElementById('section');
+    let i = 0;
+
+    /*for (i = 0; element.childNodes.length; i++) {
+        const child = element.childNodes[i].firstChild;
+
+        if (child) {
+            switch (child.type) {
+                case 'text':
+                case 'date':
+                    child.value = '';
+            }
+        }
+    }*/
+
+
+}
 
 // ** Async function that uses FETCH() to make a GET request to the API ** //
 const getGeoNames = async(geoNames_URL, city_input, userName) => {
@@ -173,9 +232,7 @@ function countDownTime() {
    document.getElementById('countdown').textContent = days + ' :Days '+ hours + ' :Hours '+ minutes + ' :Minutes '+ seconds + ' :Seconds';
 }
 
-function reloadPage() {
-    location.reload(true);
-}
+
 
 
 
@@ -289,4 +346,5 @@ const updateUI = async (url = '') => {
 };
 
 // adding exports statements*/ 
-export {performAction}
+export {performAction};
+export {removeTripHandler};
