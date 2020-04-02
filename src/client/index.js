@@ -11,6 +11,8 @@ import './styles/style.scss';
 import './styles/header.scss';
 import './styles/index.scss';
 import './styles/image.scss';
+import './styles/footer.scss';
+import './styles/fonts.scss';
 
 //exporting my JS function
 export {

@@ -40,6 +40,9 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
+        }),
+        new webpack.DefinePlugin ({
+            "process.env.GEO_USERNAME": JSON.stringify('aleregue25')
         })
     ]
 }

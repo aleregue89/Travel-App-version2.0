@@ -6,33 +6,48 @@
   <meta content="width=device-width, initial-scale =1, maximun-scale=1" name="viewport"/>
   </head>
 
-  <header>Travel Planner</header>
+  <header class="nav"><h1>Travel Planner</h1>
+    <ul>
+      <li><a href="https://www.linkedin.com/">LinkedIn</a></li>
+      <li><a href="https://facebook.com/">Facebook</a></li>
+      <li><a href="https://www.twitter.com">Twitter</a></li>
+  </ul>
+  </header>
 
   <body>
-    <div class="container" id="mainContainer">
+    <main class="container" id="mainContainer">
       <div class="image">
-        <img id="picture" alt= "image from pixabay API" style="width: auto; height: auto;">
+        <img id="picture" alt= "image from pixabay API">
       </div>
       <div class="content">
-        <section class="trip info" id='section'>
-          <p class="text" style="font-size: 10px;">My Trip to: </p>
+        <section class="user_input" id='section'>
+          <p class="text"><strong>My Trip to:</strong></p>
           <input type="text" id="city" placeholder="Please enter a City">
     
-          <p class="text" style="font-size: 10px;">Departure Day</p>
+          <p class="text"><strong>Departure Day:</strong></p>
           <input type="date" id="starDate" placeholder="Please enter your departure date">
     
-          <p class="text" style="font-size: 10px;">Returning Day</p>
+          <p class="text"><strong>Returning Day:</strong></p>
           <input type="date" id="endDate" placeholder="Please enter your return date">
     
           <p><button class="button" id="saveTrip" type="button" onclick="return Client.performAction(event)">Save my trip</button></p>
           <p><button class="button" id="removeTrip" type="button" onclick="return Client.removeTripHandler(event)">Remove my trip</button></p>
-          <p>Trip duration (days):<div id="tripLength" style="color: black;"></div></p>
-          <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
-          <p>Weather-Forecast: <div id="forecast"></div></p>
+        </section> 
         
+        <section class="trip_info" id="section">
+          <p><strong>Trip duration (days):</strong><div id="tripLength" style="color: black;"></div></p>
+          <p><strong>Countdown:</strong><div id="countdown" style="font-size: 10px;"></div></p>
+          <p><strong>Weather-Forecast:</strong><div id="forecast"></div></p>
         </section>
+        
       </div>
+      <br>
+
+
+      <footer></footer>
     
+    </main>
+
     <script>
       // check that source workers are supported
       if ('serviceWorkers' in navigator) {

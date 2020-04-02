@@ -1,12 +1,12 @@
 const DARKSKY_URL = 'https://api.darksky.net/forecast/';
-//const DARKSKY_KEY = 'db31b6288253b83854064ae560ac9428';
-const DARKSKY_KEY = process.env.DARKSKY_KEY;
+const DARKSKY_KEY = 'db31b6288253b83854064ae560ac9428';
+//const DARKSKY_KEY = process.env.DARKSKY_KEY;
 const PIXABAY_URL = 'https://pixabay.com/api/';
-//const PIXABAY_KEY = '?key=15688114-b6cd11ea226bd30563ab32a7e';
-const PIXABAY_KEY = process.env.PIXABAY_KEY;
+const PIXABAY_KEY = '?key=15688114-b6cd11ea226bd30563ab32a7e';
+//const PIXABAY_KEY = process.env.PIXABAY_KEY;
+
 // Require DOTENV
 require('dotenv').config();
-
 
 // Setup empty JS object to act as endpoint for all routes
 projectData = [];
@@ -98,6 +98,7 @@ const getDarkSky = async(darkSky_URL, darkSky_KEY, latitude, longitude, response
     let currentDate = new Date().getTime();
     const timeToDate = Math.floor(currentDate/1000);
     const url = darkSky_URL+darkSky_KEY+'/'+latitude+','+longitude+','+timeToDate;
+    console.log(url);
     axios.get(url).then(res => {
         response.json(res.data.daily.data[0]);
     });

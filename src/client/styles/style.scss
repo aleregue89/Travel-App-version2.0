@@ -1,81 +1,55 @@
 body{
     background: #fffff8;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-#app{
-    display: grid;
-    grid-auto-rows: minmax(150px, auto);
-    /* grid-template-columns:  */
-    height:100vh;
-    background: #f23557;
-    color: #f0d43a;
-    justify-content: center;
-    grid-gap: 1em;
-    font-size: 20px;
-    font-family: 'Oswald', sans-serif;
-}
-
-.holder{
-
-}
-
-.entry{
-    background: rgba(59, 74, 107, .4);
-}
-
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
-}
-
-.headline {
-
-}
-.title{
-
+    background-color: grayscale($color: #e7e3e3);
+    color: black;
+    font-weight: 100;
+    //font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-    display:block;
-    font-size: 27px;
-}
-
 input{
     display:block;
-    height: 60px;
-    width: 320px;
-    background:#22b2da;
+    height: 40px;
+    width: 200px;
+    background:#0c1a1b;
     color: #f0d43a;
-    font-size: 20px;
+    font-size: 13px;
     font-family: 'Oswald', sans-serif;
     border: none;
 }
+
+/* Style for Placeholder Text*/
+::placeholder { /* Firefox, Chrome, Opera */ 
+    color: #e2d588; 
+    font-family: 'Oswald', sans-serif;
+
+} 
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: #e2d588; 
+    font-family: 'Oswald', sans-serif;
+
+} 
+  
+::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: #e2d588; 
+    font-family: 'Oswald', sans-serif;
+
+} 
 
 button{
     width: 200px;
     height: 50px;
-    background: #3b4a6b;
-    color: #f0d43a;
-    font-size: 26px;
+    background: #575858;
+    color: #f3e7a2;
+    font-size: 20px;
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
-}
-h1{
-    font-size: 36px;
 }
 
 textarea{
@@ -91,21 +65,11 @@ textarea:focus,
 button:focus {
     outline: none;
 }
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
 
-} 
-  
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
+.user_input {
+    background-color: grayscale($color: #ebebeb);
+}
 
-} 
-  
-::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
-    font-family: 'Oswald', sans-serif;
-
-} 
+.trip_info {
+    background-color:grayscale($color: #e9e3e3);
+}

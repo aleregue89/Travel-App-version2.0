@@ -2,6 +2,35 @@ header{
     display: flex;
     align-items: center;   
     margin-top: 1em;
-    background-color: lightblue;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    background-color: #0c1a1b;
     
  }
+
+ h1{
+    color: #f0d43a;
+ }
+
+header ul {
+   margin: 15px 0;
+   list-style: none;
+   display: flex;
+   justify-content: space-evenly;
+}
+
+/* adding style to elements */
+ul{
+   padding: 0.5em;
+   list-style: none;
+}
+
+li{
+   padding: 0.5em;
+}
+
+ul li a{
+   color: #02b3e4;
+   text-decoration: none;
+}

@@ -1,6 +1,20 @@
 .image {
-    background-color: lightcyan;
+    max-width: 50%;
+    align-content: center;
+    max-height: fit-content;
+    height: auto;
+    size: 150px;
+    display: flexbox;
     margin: 1em auto;
-    padding: 10em;
-    border-radius: 15px;
+    margin-left: 40px;
+    object-fit: cover;
+    padding: 6em;
+    padding-bottom: 5;
+    border-radius: 10px;
+    box-shadow: 2px 4px 5px #444;
+    background-color: rgb(231, 238, 238);
 }
+
+#image {
+    padding-bottom: 30px;
+  }
