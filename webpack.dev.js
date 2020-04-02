@@ -11,6 +11,9 @@ module.exports = {
         library: 'Client'
     },
     mode: 'development',
+    node: {
+        fs: "empty"
+     },
     module: {
         rules: [
             {

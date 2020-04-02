@@ -1,14 +1,17 @@
 import { checkForName } from "./nameValidation";
 
-// Travel-Planner functionality //
-
 /* Global Variables */
 const geoNames_URL = 'http://api.geonames.org/searchJSON?q=';
 const userName = 'aleregue25';
 
+//const userName = process.env.GEONAME_USER;
+require('dotenv').config();
 
+// creating event listener to wait for DOM Content Load
 /* creating event listener - click on button - save trip*/
-document.getElementById('saveTrip').addEventListener('click', performAction);
+document.addEventListener('DOMContentLoad', function() {
+    document.getElementById('saveTrip').addEventListener('click', performAction);
+});
 
 function performAction(event) {
     event.preventDefault();
@@ -66,8 +69,11 @@ function performAction(event) {
 
 }
 
+document.addEventListener('DOMContentLoad', function() {
+    document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
+});
 // Creating fuction to reload page when Client click button 'Remove Trip'
-document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
+//document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
 
 function removeTripHandler(event) {
     event.preventDefault();
@@ -193,7 +199,7 @@ function updateUI (data) {
     const newElement = document.createElement('h4');
     newElement.innerHTML = forecast;
     document.getElementById('forecast').appendChild(newElement);
-};
+}
 
 const sendServerRequest = async ( url = '', data = {})=>{
     //console.log(data);

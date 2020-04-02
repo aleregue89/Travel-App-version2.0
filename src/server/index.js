@@ -1,7 +1,12 @@
 const DARKSKY_URL = 'https://api.darksky.net/forecast/';
-const DARKSKY_KEY = 'db31b6288253b83854064ae560ac9428';
+//const DARKSKY_KEY = 'db31b6288253b83854064ae560ac9428';
+const DARKSKY_KEY = process.env.DARKSKY_KEY;
 const PIXABAY_URL = 'https://pixabay.com/api/';
-const PIXABAY_KEY = '?key=15688114-b6cd11ea226bd30563ab32a7e';
+//const PIXABAY_KEY = '?key=15688114-b6cd11ea226bd30563ab32a7e';
+const PIXABAY_KEY = process.env.PIXABAY_KEY;
+// Require DOTENV
+require('dotenv').config();
+
 
 // Setup empty JS object to act as endpoint for all routes
 projectData = [];

@@ -12,26 +12,26 @@
     <div class="container" id="mainContainer">
       <div class="image">
         <img id="picture" alt= "image from pixabay API" style="width: auto; height: auto;">
-    </div>
-    <div class="content">
-      <section class="trip info" id='section'>
-        <p class="text" style="font-size: 10px;">My Trip to: </p>
-        <input type="text" id="city" placeholder="Please enter a City">
+      </div>
+      <div class="content">
+        <section class="trip info" id='section'>
+          <p class="text" style="font-size: 10px;">My Trip to: </p>
+          <input type="text" id="city" placeholder="Please enter a City">
     
-        <p class="text" style="font-size: 10px;">Departure Day</p>
-        <input type="date" id="starDate" placeholder="Please enter your departure date">
+          <p class="text" style="font-size: 10px;">Departure Day</p>
+          <input type="date" id="starDate" placeholder="Please enter your departure date">
     
-        <p class="text" style="font-size: 10px;">Returning Day</p>
-        <input type="date" id="endDate" placeholder="Please enter your return date">
+          <p class="text" style="font-size: 10px;">Returning Day</p>
+          <input type="date" id="endDate" placeholder="Please enter your return date">
     
-        <p><button class="button" id="saveTrip" type="button" onclick="return Client.performAction(event)">Save my trip</button></p>
-        <p><button class="button" id="removeTrip" type="button" onclick="return Client.removeTripHandler(event)">Remove my trip</button></p>
-        <p>Trip duration (days):<div id="tripLength" style="color: black;"></div></p>
-        <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
-        <p>Weather-Forecast: <div id="forecast"></div></p>
+          <p><button class="button" id="saveTrip" type="button" onclick="return Client.performAction(event)">Save my trip</button></p>
+          <p><button class="button" id="removeTrip" type="button" onclick="return Client.removeTripHandler(event)">Remove my trip</button></p>
+          <p>Trip duration (days):<div id="tripLength" style="color: black;"></div></p>
+          <p>Countdown: <div id="countdown" style="font-size: 10px;"></div></p>
+          <p>Weather-Forecast: <div id="forecast"></div></p>
         
-      </section>
-    </div>
+        </section>
+      </div>
     
     <script>
       // check that source workers are supported

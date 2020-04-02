@@ -42,3 +42,6 @@ deleted from src/client/views/index.html => installing HtmlWebPackPlugin
 
 </body>
 </html>
+
+
+const userName = 'aleregue25';
