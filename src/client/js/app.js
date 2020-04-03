@@ -69,57 +69,6 @@ function performAction(event) {
 
 }
 
-document.addEventListener('DOMContentLoad', function() {
-    document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
-});
-// Creating fuction to reload page when Client click button 'Remove Trip'
-//document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
-
-function removeTripHandler(event) {
-    event.preventDefault();
-
-    const elementRemoverForecastId = document.getElementById('forecast');
-    while (elementRemoverForecastId.firstChild) {
-        elementRemoverForecastId.removeChild(elementRemoverForecastId.firstChild);
-    }
-
-    const elementRemoverPictureId = document.getElementById('picture');
-    while (elementRemoverPictureId.firstChild) {
-        elementRemoverPictureId.removeChild(elementRemoverPictureId.firstChild);
-    }
-
-    const elementRemoverCountdownId = document.getElementById('countdown');
-    while (elementRemoverCountdownId.firstChild) {
-        elementRemoverCountdownId.removeChild(elementRemoverCountdownId.firstChild);
-    }
-
-    const elementRemoverTripLengthId = document.getElementById('tripLength');
-    while (elementRemoverTripLengthId.firstChild) {
-        elementRemoverTripLengthId.removeChild(elementRemoverTripLengthId.firstChild);
-    }
-
-    //const elementRemoverEndDate = $('endDate').reset();
-    //const elementRemoverEndDateId = document.getElementById('endDate').value='';
-    //const elementRemoverStartDate = document.getElementById('starDate').value='';
-   
-    let element = document.getElementById('section');
-    let i = 0;
-
-    /*for (i = 0; element.childNodes.length; i++) {
-        const child = element.childNodes[i].firstChild;
-
-        if (child) {
-            switch (child.type) {
-                case 'text':
-                case 'date':
-                    child.value = '';
-            }
-        }
-    }*/
-
-
-}
-
 // ** Async function that uses FETCH() to make a GET request to the API ** //
 const getGeoNames = async(geoNames_URL, city_input, userName) => {
     const response = await fetch(geoNames_URL+city_input+'&maxRows=10&username='+userName);
@@ -133,19 +82,11 @@ const getGeoNames = async(geoNames_URL, city_input, userName) => {
 };
 
 function updatePicture (data) {
-    // Make HTML, CSS changes
-    /* data =
-    {
-  image: url,
-  likes: 89,
-  */
-   
    document.getElementById('picture').src = data.image;
    //document.getElementById('image_likes').innerHTML = data.likes;
 }
 
 function updateUI (data) {
-    // Make HTML, CSS changes
     /* data =
     {
   time: 1585368000,
@@ -194,7 +135,6 @@ function updateUI (data) {
   apparentTemperatureMaxTime: 56.67,
     }*/
 
-    
     const forecast = 'The Weather is '+ data.summary + ' With a max of temperature of '+ data.temperatureMax +'. Precipitation: '+ data.precipType +' with  a chance of '+ data.precipProbability+'%';
     const newElement = document.createElement('h4');
     newElement.innerHTML = forecast;
@@ -238,118 +178,28 @@ function countDownTime() {
    document.getElementById('countdown').textContent = days + ' :Days '+ hours + ' :Hours '+ minutes + ' :Minutes '+ seconds + ' :Seconds';
 }
 
+document.addEventListener('DOMContentLoad', function() {
+    document.getElementById('removeTrip').addEventListener('click', removeTripHandler);
+});
+// Creating fuction to reset page when Client click button 'Remove Trip'
+function removeTripHandler(event) {
+    event.preventDefault();
 
+    document.getElementById('starDate').value="";
+    document.getElementById('endDate').value="";
+    document.getElementById('city').value="";
 
+    function removeElement(elementId) {
+        // removes an element from the DOM
+        let element = document.getElementById(elementId);
+        element.parentNode.removeChild(element);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-/* Global Variables 
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
-const apikey = '4ddfc73dcbfe30676b5536475ecb5055';
-//let zip = document.getElementById('zip').value;
-//let userResponse = document.getElementById('feelings').value;
-
-//Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = (d.getMonth()+1)+'.'+ d.getDate()+'.'+ d.getFullYear();
-// transforming date to string
-
-//document.getElementById('generate')
-
-// ** Create an event listener - element => id = generate ** //
-document.getElementById('generate').addEventListener('click', performAction);
-// ** callback function called by event listener ** //
-function performAction(event) {
-    const newZip = document.getElementById('zip').value;
-    const userResponse = document.getElementById('feelings').value;
-
-    getWeather(baseURL, newZip, apikey).then(function(data) {
-        console.log(data);
-        // ** add data to a POST request ** //
-        postData('/add', {temperature: data.main.temp, date: date, userResponse: userResponse}).then(
-            updateUI('/all').then(setTimeout(function() {
-                const span = document.getElementById('span loading');
-                if (span) {
-                    const hide = document.getElementById('loading');
-                    hide.removeChild(span);
-                }
-            }, 3000))
-        );
-    }).then (function(data) {
-        const span = document.createElement('span');
-        span.innerHTML = 'loading...';
-        span.id = 'span loading';
-        const loadingBar = document.getElementById('loading').appendChild(span);
-    });
+    removeElement('picture');
+    removeElement('tripLength');
+    removeElement('countdown');
     
-} 
-
-// ** Async function that uses FETCH() to make a GET request to the API ** //
-const getWeather = async(baseURL, newZip, apiKey) => {
-    const response = await fetch(baseURL + newZip + '&apikey=' + apiKey + '&units=imperial');
-    try {
-        // transform into JSON
-        const data = await response.json();
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log("error", error);
-    }
-};
-
-// ** Creating another PROMISE - POST request to add API data as well data from user ** //
-/* Function to POST data *
-const postData = async ( url = '', data = {})=>{
-    //console.log(data);
-      const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header        
-    });
-  
-      try {
-        const newData = await response.json();
-        console.log(newData);
-        return newData;
-      }catch(error) {
-      console.log("error", error);
-      // appropriately handle the error
-      }
-  };
-  
-  /*
-  // TODO-Call Function
-  postData('/add', {animmal: 'dog'});
-  //postData('/addzipCode', {zipCode: 33165});
-*/
-
-  /* Promise for updating the UI dynamically 
-const updateUI = async (url = '') => {
-    const request = await fetch(url);
-    try{
-        const allData = await request.json();
-        console.log(allData);
-        document.getElementById('date').innerHTML = allData[0].date;
-        document.getElementById('temp').innerHTML = allData[0].temperature;
-        document.getElementById('content').innerHTML = allData[0].userResponse;
-    } catch (error) {
-        console.log("error", error);
-    }
-
-};
+}
 
 // adding exports statements*/ 
 export {performAction};

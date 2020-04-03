@@ -45,3 +45,42 @@ deleted from src/client/views/index.html => installing HtmlWebPackPlugin
 
 
 const userName = 'aleregue25';
+
+/*const elementRemoverForecastId = document.getElementById('forecast');
+    while (elementRemoverForecastId.firstChild) {
+        elementRemoverForecastId.removeChild(elementRemoverForecastId.firstChild);
+    }
+
+    const elementRemoverPictureId = document.getElementById('picture');
+    while (elementRemoverPictureId.firstChild) {
+        elementRemoverPictureId.removeChild(elementRemoverPictureId.firstChild);
+    }
+
+    const elementRemoverCountdownId = document.getElementById('countdown');
+    while (elementRemoverCountdownId.firstChild) {
+        elementRemoverCountdownId.removeChild(elementRemoverCountdownId.firstChild);
+    }
+
+    const elementRemoverTripLengthId = document.getElementById('tripLength');
+    while (elementRemoverTripLengthId.firstChild) {
+        elementRemoverTripLengthId.removeChild(elementRemoverTripLengthId.firstChild);
+    }
+
+    //const elementRemoverEndDate = $('endDate').reset();
+    //const elementRemoverEndDateId = document.getElementById('endDate').value='';
+    //const elementRemoverStartDate = document.getElementById('starDate').value='';
+   
+    let element = document.getElementById('section');
+    let i = 0;
+
+    /*for (i = 0; element.childNodes.length; i++) {
+        const child = element.childNodes[i].firstChild;
+
+        if (child) {
+            switch (child.type) {
+                case 'text':
+                case 'date':
+                    child.value = '';
+            }
+        }
+    }*/
